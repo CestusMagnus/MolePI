@@ -1,0 +1,72 @@
+
+The following image is a draft that how i am doing it.
+Image
+(see file \\pimole\code\web\schematic.pdf
+
+http get-requests are a quite good choice. GET-requests can carry parameters, example:
+http://www.example.org/suche?stichwort= ... gabe=liste
+The nice feature about this is the 'testability' with a plain web browser (or telnet).
+So you can test this local at home, then remote (to validate the remote access rules of your router)
+without the need to have a sender application fully available.
+
+For the sender side, look for the httplib-package.
+For the web server side, if you have php methods available. 
+echo $_GET['stichwort'];
+is something useful.
+
+I'd also recommend taking a look at the Requests module for sending requests as 
+it's really very easy to use. GET requests are described here: http://www.python-requests.org/en/lates ... rs-in-urls
+
+CODE: SELECT ALL
+import requests
+payload = {"stichwort": "wiki", "ausgabe": "liste"}
+r = requests.get("http://www.example.org/suche", params=payload)
+print(r.url)
+# http://www.example.org/suche?stichwort=wiki&ausgabe=liste
+
+
+Interesting to note that, even though it's not packaged in the standard python library (so you'll need to install it), the python docs do also recommend using it for more advanced requests.
+RPi Information Screen: plugin based system for displaying weather, travel information, football scores etc.
+PiTFT Screen: Python module for the Adafruit PiTFT screen. Handle button presses and toggle backlight.
+PiPlayBox: 8 buttons
+
+I'd also recommend taking a look at the Requests module for sending requests
+as it's really very easy to use. GET requests are described here: http://www.python-requests.org/en/lates ... rs-in-urls
+import requests
+payload = {"stichwort": "wiki", "ausgabe": "liste"}
+r = requests.get("http://www.example.org/suche", params=payload)
+print(r.url)
+# http://www.example.org/suche?stichwort=wiki&ausgabe=liste
+
+
+Interesting to note that, even though it's not packaged in the 
+standard python library (so you'll need to install it), the python docs do also 
+recommend using it for more advanced requests.
+
+
+
+So do i write the "example" code into python or html, sorry kinda confuse.
+
+Edit:
+
+I have tried, the following code but i was given some error with import requests.
+
+I got this error
+CODE: SELECT ALL
+Traceback (most recent call last):
+  File "E:\User\Document\College\Python\Test.py", line 1, in <module>
+    import requests
+ImportError: No module named 'requests'
+
+
+I am doing this code at my current computer to test it out if it works, 
+so if it works then i can bring it on stream for testing.
+
+
+Python ! ( in a file or in a python >>> REPL ( read eval print loop ) )
+
+Possibly, you will have to install "pip" first using the instructions given.
+Then install "requests" using pip, along the lines of :
+
+CODE: SELECT ALL
+pip install requests
